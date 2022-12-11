@@ -4,12 +4,26 @@ const authController = {};
 
 authController.signUp = async (req, res, next) => {
     try {
-        const { name, email, password } = req.body;
+        const { fullName, email, phone, address, image, username, password } = req.body;
+        const newUser = {
+            fullName,
+            email,
+            phone,
+            address,
+            image,
+            username,
+            password,
+        };
 
-        let user = await User.findOne({ email });
-        if (user) throw new Error("Email ya registrado 😒");
+        newUser.image = req.file.filename;
 
-        user = new User({ name, email, password });
+        const emailExists = await User.findOne({ email });
+        if (emailExists) throw new Error("El correo ya está registrado 😒");
+
+        const usernameExists = await User.findOne({ username });
+        if (usernameExists) throw new Error("El nombre de usuario ya está registrado 😒");
+
+        const user = await User.create(newUser);
         await user.save();
 
         res.status(201).json({ user });
@@ -21,10 +35,10 @@ authController.signUp = async (req, res, next) => {
 
 authController.signIn = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { username, password } = req.body;
 
-        const user = await User.findOne({ email });
-        if (!user) throw new Error("Email no registrado 😒");
+        const user = await User.findOne({ username });
+        if (!user) throw new Error("Usuario no registrado 😒");
 
         const isMatch = await user.matchPassword(password);
         if (!isMatch) throw new Error("Contraseña incorrecta 😒");

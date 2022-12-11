@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head', {title: 'Register' }) %>
+</head>
+
+<body>
+    <main class="mt-5">
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <div class="card-title font-weight-bold">Registro</div>
+                        <div class="card-category">Crea tu cuenta para obtener acceso completo</div>
+                    </div>
+                    <form id="form_register">
+                        <div class="card-body">
+                            <div class="form-group text-center mb-3">
+                                <img src="/img/User_Circle.png" class="profile" height="100" alt="Image preview...">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_fullname">Nonbre Completo</label>
+                                        <input class="form-control" type="text" name="fullName" id="input_fullname"
+                                            placeholder="fullName" required autofocus>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_email">Correo Electrónico</label>
+                                        <input class="form-control" type="text" name="email" id="input_email"
+                                            placeholder="Email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_phone">Teléfono</label>
+                                        <input class="form-control" type="text" name="phone" id="input_phone"
+                                            placeholder="Phone" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_address">Dirección</label>
+                                        <input class="form-control" type="text" name="address" id="input_address"
+                                            placeholder="Address" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_image">Subir Imagen</label>
+                                        <input class="form-control" type="file" name="image" id="input_image"
+                                            accept="image/*" onchange="previewImage(event)" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_username">Nombre de Usuario</label>
+                                        <input class="form-control" type="text" name="username" id="input_username"
+                                            placeholder="Username" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="input_password">Contraseña</label>
+                                        <input class="form-control" type="password" name="password" id="input_password"
+                                            placeholder="Password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-center mb-3">
+                                <button class="btn btn-primary btn-block" type="submit">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="card-footer text-center">
+                        <p>¿Ya tienes una cuenta? <a class="font-weight-bold" href="/auth/login">Entre</a> aquí</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('../partials/scripts') %>
+        <script src="../../js/register.js"></script>
+
+</body>
+
+</html>

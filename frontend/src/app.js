@@ -9,6 +9,7 @@ dotenv.config();
 // Importing routes
 const indexRoutes = require('./routes/index.routes');
 const authRoutes = require('./routes/auth.routes');
+const accountRoutes = require('./routes/account.routes');
 const productRoutes = require('./routes/product.routes');
 
 // Initializations
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
+app.use('/account', accountRoutes);
 app.use('/products', productRoutes);
 
 // Static files
